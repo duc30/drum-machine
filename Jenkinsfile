@@ -4,10 +4,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-	sh 'echo Build stage'
-	sh 'npm install'
-	sh 'npm run build'
-	sh 'npm run test'
+	wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+	  sh 'echo Build stage'
+	  sh 'npm install'
+	  sh 'npm run build'
+	  sh 'npm run test'
+	}
       }
     }
     stage('Deploy') {
