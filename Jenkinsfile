@@ -11,14 +11,19 @@ pipeline {
 	  sh 'npm run test'
 	}
 
-        script {
-          step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
-	}
+	archiveArtifacts artifacts: 'public/**', fingerprint: true
+	stash includes: "public/**", name: "project"
+	      
+        //script {
+          //step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
+	//}
       }
     }
     stage('Deploy') {
       steps {
 	sh 'echo Deploy stage'
+	unstash "project"
+	sh 'ls -l public'
       }
     }
     stage('Integration tests') {
