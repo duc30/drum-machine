@@ -22,7 +22,7 @@ pipeline {
       }
     }
     stage('Deploy') {
-      agent master
+      agent { label: "master"}
       steps {
 	sh 'echo Deploy stage'
 	unstash "project"
@@ -31,6 +31,7 @@ pipeline {
       }
     }
     stage('Integration tests') {
+      agent { label: "master"}
       steps {
 	sh 'echo Integration tests stage'
 	sh 'curl -i http://localhost:8081'
