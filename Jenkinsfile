@@ -10,15 +10,15 @@ pipeline {
 	  sh 'npm run build'
 	  sh 'npm run test'
 	}
+
+        script {
+          step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
+
       }
     }
     stage('Deploy') {
       steps {
 	sh 'echo Deploy stage'
-
-        script {
-          step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
-        }
       }
     }
     stage('Integration tests') {
