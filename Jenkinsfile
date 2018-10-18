@@ -13,7 +13,7 @@ pipeline {
 
         script {
           step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
-
+	}
       }
     }
     stage('Deploy') {
