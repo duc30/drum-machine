@@ -5,10 +5,12 @@ pipeline {
     stage('Build') {
       steps {
 	wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
-	  sh 'echo Build stage'
-	  sh 'npm install'
-	  sh 'npm run build'
-	  sh 'npm run test'
+	  nodejs('NodeJS') {
+	    sh 'echo Build stage'
+	    sh 'npm install'
+	    sh 'npm run build'
+	    sh 'npm run test'
+	  }
 	}
 
 	archiveArtifacts artifacts: 'public/**', fingerprint: true
