@@ -10,8 +10,12 @@ pipeline {
       }
     }
     stage('Deploy') {
+      steps {
+      }
     }
     stage('Integration tests') {
+      steps {
+      }
     }
   }
 }
