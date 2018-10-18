@@ -22,6 +22,7 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent master
       steps {
 	sh 'echo Deploy stage'
 	unstash "project"
