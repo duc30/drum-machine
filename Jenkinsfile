@@ -17,7 +17,7 @@ pipeline {
 	sh 'echo Deploy stage'
 
         script {
-          step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/**", target: 'DUCTEST']);
+          step ([$class: 'CopyArtifact', projectName: 'drum-machine-pipeline', filter: "public/index.html", target: 'DUCTEST']);
         }
       }
     }
