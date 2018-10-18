@@ -4,6 +4,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+	sh 'echo Build stage'
 	sh 'npm install'
 	sh 'npm run build'
 	sh 'npm run test'
@@ -11,10 +12,12 @@ pipeline {
     }
     stage('Deploy') {
       steps {
+	sh 'echo Deploy stage'
       }
     }
     stage('Integration tests') {
       steps {
+	sh 'echo Integration tests stage'
       }
     }
   }
