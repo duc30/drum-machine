@@ -4,8 +4,14 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo duc'
+	sh 'npm install'
+	sh 'npm run build'
+	sh 'npm run test'
       }
+    }
+    stage('Deploy') {
+    }
+    stage('Integration tests') {
     }
   }
 }
