@@ -23,7 +23,7 @@ pipeline {
       steps {
 	sh 'echo Deploy stage'
 	unstash "project"
-	sshPublisher(publishers: [sshPublisherDesc(configName: 'docker-nginx-sshd', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'public/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+	sshPublisher(publishers: [sshPublisherDesc(configName: 'docker-nginx-sshd', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/sites', remoteDirectorySDF: false, removePrefix: 'public', sourceFiles: 'public/**')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 	//sh 'ls -l public'
       }
     }
